@@ -24,7 +24,7 @@ Value http_create_headers(std::vector<Value>& n, Ark::VM* vm)
             key = v.string_ref().toString();
         else
         {
-            h.back()->insert(std::pair<std::string, std::string>(key, v.string_ref().toString()));
+            h.back()->emplace(key, v.string_ref().c_str());
             key = "";
         }
     }

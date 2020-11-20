@@ -84,6 +84,7 @@ UserType::ControlFuncs* get_cfs_client()
 UserType::ControlFuncs* get_cfs_header()
 {
     static UserType::ControlFuncs cfs;
+    // TODO understand why it's segfaulting when we've more than one header
     cfs.ostream_func = [](std::ostream& os, const UserType& a) -> std::ostream& {
         os << "httpHeaders<";
         for (const auto& p : a.as<Headers>())
